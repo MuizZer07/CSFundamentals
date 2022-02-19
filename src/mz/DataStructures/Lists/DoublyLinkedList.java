@@ -1,23 +1,24 @@
 package mz.DataStructures.Lists;
-
 import mz.Utils.Console;
 
-public class SimpleListLinkedList {
-	
-	private Node head;
-	private int currentSize;
+public class DoublyLinkedList {
+
+	Node head;
+	int currentSize;
 	
 	public static class Node{
-		int value;
+		Node prev;
 		Node next;
+		int value;
 		
-		public Node(int val){
+		Node(int val){
 			value = val;
+			prev = null;
 			next = null;
 		}
 	}
 	
-	public SimpleListLinkedList() {
+	public DoublyLinkedList(){
 		this.head = null;
 		this.currentSize = 0;
 	}
@@ -34,24 +35,28 @@ public class SimpleListLinkedList {
 	private void addInTheBeginning(int value) {
 		Node newNode = new Node(value);
 		
-		if(this.head != null)
+		if(this.head != null) {
 			newNode.next = this.head;
-		
+			this.head.prev = newNode;
+		}
+			
 		this.head = newNode;
 	}
 	
 	private void addInTheEnd(int value) {
 		Node newNode = new Node(value);
+		Node node = this.head.next;
 		Node prevNode = null;
-		Node node = this.head;
 		
 		while(node != null) {
 			prevNode = node;
 			node = node.next;
 		}
 	
-		
-		prevNode.next = newNode;
+		if(prevNode != null) {
+			prevNode.next = newNode;
+			newNode.prev = prevNode;
+		}
 	}
 	
 	public Node findNode(int value) {
@@ -68,21 +73,36 @@ public class SimpleListLinkedList {
 	}
 	
 	public void remove(int value) {
-		Node prevNode = null;
 		Node node = this.head;
-		
+
 		while(node != null) {
-			prevNode = node;
-			node = node.next;
-			
-			if(node != null && node.value == value) {
+			if(node.value == value) {
 				this.currentSize--;
 				break;
 			}
+			
+			node = node.next;
 		}
 	
-		if(node != null)
-			prevNode.next = node.next;
+		if(node != null) {
+			Node tempNode = node;
+			node = node.next;
+			
+			if(node != null) {
+				if(tempNode.prev != null) {
+					node.prev = tempNode.prev;
+					tempNode.prev.next = node;
+				}else {
+					this.head = node;
+				}
+			}else {
+				if(tempNode.prev != null) {
+					tempNode.prev.next = null;
+				}else {
+					this.deleteList();
+				}
+			}
+		}
 	}
 	
 	public void deleteList() {
@@ -104,4 +124,5 @@ public class SimpleListLinkedList {
 	public boolean isEmpty() {
 		return this.head == null;
 	}
+	
 }
