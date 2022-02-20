@@ -80,7 +80,7 @@ public class BinarySearchTree {
 		return this.findMaximum(this.root);
 	}
 	
-	public Node insertNode(int val, Node node) {
+	private Node insertNode(int val, Node node) {
 		Node newNode = new Node(val);
 		
 		if(this.root == null) {

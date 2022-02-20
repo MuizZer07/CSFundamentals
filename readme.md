@@ -1,6 +1,6 @@
 ## CS Programming Fundamentals
 
-Revisiting CS Programming fundamentals from scratch with Java. This repository will cover implementations of basic Data Structures, Algorithms and common programming problems.
+Revisiting CS Programming fundamentals from scratch with Java. This repository will cover implementations of basic Data Structures, Algorithms and common programming problems including Object Oriented Programming (OOP) as practices for my upcoming PhD Proficienct Exam.
 
 ### Topics (Intended to Cover)
 #### 1. Abstract Data Types (ADTs) - Both Array & Linked List implementations
@@ -47,3 +47,6 @@ Revisiting CS Programming fundamentals from scratch with Java. This repository w
 #### 10. Dynamic Programming Problems
 
 #### 11. Greedy Problems
+
+#### 12. Object Oriented Programmnig (OOP)
+- Solutions for the previous year's questions
