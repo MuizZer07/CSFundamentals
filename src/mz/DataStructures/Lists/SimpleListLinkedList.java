@@ -23,8 +23,12 @@ public class SimpleListLinkedList {
 		this.currentSize = 0;
 	}
 	
+	public int getCurrentSize() {
+		return this.currentSize;
+	}
+	
 	public void add(int value, int position) {
-		if(position == 0) { // add in the beginning of the list
+		if(position == 0 || this.head == null) { // add in the beginning of the list
 			this.addInTheBeginning(value);
 		}else if(position == -1) { // add in the end of the list
 			this.addInTheEnd(value);
@@ -81,7 +85,8 @@ public class SimpleListLinkedList {
 			}else {
 				newNode.next = null;
 			}
-			
+		}else {
+			this.head.next = newNode;
 		}
 	}
 	
@@ -96,6 +101,37 @@ public class SimpleListLinkedList {
 		}
 		
 		return null;
+	}
+	
+	public int removeAtIndex(int index) {
+		int value = -111;
+		
+		if(index >= this.currentSize)
+			return value;
+		
+		Node node = this.head;
+		Node prevNode = null;
+		
+		if(index == 0) {
+			value = node.value;
+			this.head = node.next;
+		}else {
+			int i = 0;
+			
+			while(node != null) {
+				prevNode = node;
+				node = node.next;
+				
+				if(++i == index) {
+					value = node.value;
+					break;
+				}
+			}
+			
+			prevNode.next = node.next;
+		}
+		
+		return value;
 	}
 	
 	public void remove(int value) {
@@ -118,6 +154,19 @@ public class SimpleListLinkedList {
 	
 	public void deleteList() {
 		this.head = null;
+	}
+	
+	public void printReverse(Node tempHead) {
+		if(tempHead == null)
+			return;
+		
+		this.printReverse(tempHead.next);
+		
+		Console.print(tempHead.value + " ");
+	}
+	
+	public void printReverseList() {
+		this.printReverse(this.head);
 	}
 	
 	public void printList() {

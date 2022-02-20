@@ -9,6 +9,10 @@ public class Console {
 		System.out.println(str);
 	}
 	
+	public static void print(String str) {
+		System.out.print(str);
+	}
+	
 	public static void printEmptyLines(int numLines) {
 		printSameLines(numLines, "");
 	}
