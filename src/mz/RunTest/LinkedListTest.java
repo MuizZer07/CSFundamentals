@@ -26,10 +26,10 @@ public class LinkedListTest {
 		myList.add(4, -1);
 		myList.printList();
 		
-		myList.add(7, 0);
+		myList.add(7, 2);
 		myList.printList();
 		
-		myList.add(0, -1);
+		myList.add(0, 4);
 		myList.printList();
 		
 		myList.remove(4);

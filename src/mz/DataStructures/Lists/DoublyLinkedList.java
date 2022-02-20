@@ -28,6 +28,8 @@ public class DoublyLinkedList {
 			this.addInTheBeginning(value);
 		}else if(position == -1) { // add in the end of the list
 			this.addInTheEnd(value);
+		}else {
+			this.addAtIndex(value, position);
 		}
 		this.currentSize++;
 	}
@@ -56,6 +58,36 @@ public class DoublyLinkedList {
 		if(prevNode != null) {
 			prevNode.next = newNode;
 			newNode.prev = prevNode;
+		}
+	}
+	
+	private void addAtIndex(int value, int index) {
+		Node newNode = new Node(value);
+		Node node = this.head;
+		Node prevNode = null;
+		
+		int i = 0;
+		
+		while(node != null) {
+			prevNode = node;
+			node = node.next;
+			
+			if(++i == index) {
+				break;
+			}
+		}
+		
+		if(prevNode != null) {
+			prevNode.next = newNode;
+			newNode.prev = prevNode;
+			
+			newNode.prev = prevNode;
+			if(node != null) {
+				newNode.next = node;
+			}else {
+				newNode.next = null;
+			}
+			
 		}
 	}
 	
