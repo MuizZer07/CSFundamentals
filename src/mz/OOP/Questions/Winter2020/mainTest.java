@@ -14,14 +14,14 @@ public class mainTest {
 		ss.setCellValue(2, "B", "a", val_type.INT);
 		ss.setCellValue(2, "B", "6", val_type.INT);
 		
-		System.out.println();
-		ss.printShreadSheet();
+//		System.out.println();
+//		ss.printShreadSheet();
 		
 		System.out.println();
 		ss.insertColumn("B");
 		
-		ss.printShreadSheet();
-		System.out.println();
+//		ss.printShreadSheet();
+//		System.out.println();
 		
 		float[] valueRange = ss.getRange(1, "A", 2, "C");
 		for(int i=0; i<valueRange.length; i++) {
